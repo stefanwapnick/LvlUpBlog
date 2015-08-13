@@ -1,3 +1,15 @@
+# Visual Studio ignore files
+bin
+obj
+*.suo
+*.user
+*.sln.docstates
+
+[Dd]ebug/
+[Rr]elease/
+*.obj
+*.pdb
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
