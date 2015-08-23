@@ -1,0 +1,53 @@
+﻿@using System.Web.Optimization
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Simple Blog</title>
+
+
+    @Styles.Render("~/styles")
+</head>
+<body>
+    <div>
+        <header>
+            <h1>Simple Blog</h1>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>Welcome back, @User.Identity.Name</p>
+                <a href="@Url.RouteUrl("logout")">Logout</a>
+ 
+                if (User.IsInRole("admin"))
+                {
+                    <a href="@Url.Action("Index", "posts", new{area="admin"})">View posts in Admin area</a>
+                }
+            }
+            else
+            {
+                <a href="@Url.RouteUrl("login")">Login</a>
+            }
+
+        </header>
+          
+
+        @RenderBody()
+       
+    </div>
+
+    <footer>
+        <p>&copy; 2015 - Me</p>
+    </footer>
+
+
+    @Scripts.Render("~/scripts")
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

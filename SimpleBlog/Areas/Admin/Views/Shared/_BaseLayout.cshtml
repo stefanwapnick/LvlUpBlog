@@ -1,0 +1,44 @@
+﻿@using System.Web.Optimization
+
+@{
+    Layout = null;
+}
+
+@helper NavBarTab(string text, string controller, string action) {
+    <li class="@(ViewBag.SelectedTab == controller ? "active" : "")">
+        @Html.ActionLink(text, action, controller, new { area = "admin" }, new { })
+    </li>
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Simple Blog - Admin</title>
+    
+    @Styles.Render("~/admin/styles")
+</head>
+<body>
+    <nav class="container">
+      <ul class="nav nav-pills">
+          @NavBarTab("Posts", "posts", "Index")
+          @NavBarTab("Users", "users", "Index")
+
+          <li>
+              @Html.RouteLink("Back To Website", "Home")
+          </li>
+      </ul>
+    </nav>
+
+    @RenderBody()
+    
+    <footer class="container">
+        <p>&copy; 2015 - Me</p>
+    </footer>
+
+    @Scripts.Render("~/admin/scripts")
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
