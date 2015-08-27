@@ -186,6 +186,7 @@
     <Content Include="Migrations\migrate.bat" />
     <Content Include="Migrations\rollback.bat" />
     <Content Include="Areas\Admin\Views\Users\_RoleSelector.cshtml" />
+    <Content Include="Areas\Admin\Views\Posts\Form.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />

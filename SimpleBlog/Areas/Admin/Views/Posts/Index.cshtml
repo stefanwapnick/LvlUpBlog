@@ -49,7 +49,7 @@
                     <td>@post.Title</td>
                     <td>@post.User.Name</td>
                     <td>@String.Join(",", post.Tags.Select(x => x.Name))</td>
-                    <td>@post.CreatedAt</td>
+                    <td>@post.CreatedAt (UTC)</td>
                     <td>
                         <a href="@Url.Action("edit", new { post.Id})" class="btn btn-xs btn-primary">
                             <span class="glyphicon glyphicon-edit"></span> Edit
@@ -58,23 +58,23 @@
                         @if (!post.IsDeleted)
                         {
                             <div class="btn-group btn-group-xs">
-                                <a href="#" class="btn btn-danger">
+                                <a href="@Url.Action("trash", new { id = post.Id })" class="btn btn-danger" data-post="Trash post?">
                                     <span class="glyphicon glyphicon-remove"></span> Trash
                                 </a>
 
                                 <a href="#" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="caret"></span> </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="#"><span class="glyphicon glyphicon-remove"></span> Delete</a>
+                                        <a href="@Url.action("delete", new {id = post.Id})" data-post="Permanently delete post?"><span class="glyphicon glyphicon-remove"></span> Delete</a>
                                     </li>
                                 </ul>
                             </div>
                         }
                         else
                         {
-                             <a href="#" class="btn btn-success">
+                            <a href="@Url.action("restore", new {id = post.Id})" class="btn btn-success" data-post="">
                                 <span class="glyphicon glyphicon-plus-sign"></span> Restore
-                             </a>
+                            </a>
                         }
                     </td>
                 </tr>   

@@ -20,5 +20,26 @@
                     .appendTo(document.body)
                     .submit();
        */
-    }); 
+    });
+
+    // Generate slug for title
+    $("[data-slug]").each(function(){
+
+        var $sendSlugFrom = $($(this).data("slug"));           // Get title field in edit posts form data-slug="#Title will pass id of slug field
+
+        $sendSlugFrom.keyup(function () {
+            var slug = $sendSlugFrom.val();
+            slug = slug.replace(/[^a-zA-Z0-9\s]/g, "");     // replace everything that is not alphanumeric or space with empty string
+            slug = slug.toLowerCase();
+            slug = slug.replace(/\s+/g, "-");               // replace all whitespace characters with a dash
+
+            if (slug.charAt(slug.lngth - 1) == "-")         // remove last character if it is a dash
+                slug = slug.substr(0, slug.lenth - 1);      
+
+            $(this).val(slug);
+
+        });
+
+        });
+
 }); 
