@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using SimpleBlog.Models; 
 
 namespace SimpleBlog.Infrastructure
 {
@@ -9,8 +10,10 @@ namespace SimpleBlog.Infrastructure
     {
         public override string[] GetRolesForUser(string username)
         {
-            if (username == "admin")
-                return new string[] { "admin" };
+            User currentUser = UserCache.CurrentUser; 
+
+            if (currentUser != null)
+                return currentUser.Roles.Select(r => r.RoleName).ToArray(); 
             else
                 return new string[] { }; 
         }

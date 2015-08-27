@@ -1,7 +1,51 @@
-﻿@{
+﻿@model SimpleBlog.Areas.Admin.ViewModels.UsersIndex
+
+@{
     ViewBag.SelectedTab = "users";
 }
 
 <div class="container">
     <h1>Users</h1>
+
+    <div class="btn-toolbar">
+        <a href="@Url.Action("new")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Create User</a>
+    </div>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@String.Join(",", user.Roles.Select(r => r.RoleName))</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="@Url.Action("edit", new {id=@user.Id})" class="btn btn-sm btn-primary">
+                                <span class="glyphicon glyphicon-pencil"> Edit</span>
+                            </a>
+                            <a href="@Url.Action("changepassword", new {id=@user.Id})" class="btn btn-sm btn-primary">
+                                <span class="glyphicon glyphicon-edit"> Change Password</span>
+                            </a>
+                            <a href="@Url.Action("delete")" class="btn btn-sm btn-primary" data-post="Really delete @user.Name">
+                                <span class="glyphicon glyphicon-xbt"> Delete</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>   
+            }
+        </tbody>
+    </table>
+
 </div>
