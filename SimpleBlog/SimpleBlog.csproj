@@ -159,6 +159,7 @@
     <Compile Include="Models\HashUtility.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\SlugStringExtension.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserCache.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Areas\Admin\Scripts\form.js" />
+    <Content Include="Areas\Admin\Scripts\posteditor.js" />
     <Content Include="Content\Styles\admin.css" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\site.css" />

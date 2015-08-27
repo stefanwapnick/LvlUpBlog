@@ -15,6 +15,11 @@ namespace SimpleBlog.Models
         public virtual string Password { get; set; }
 
         public virtual IList<Role> Roles { get; set;  }
+
+        public User()
+        {
+            Roles = new List<Role>(); 
+        }
     }
 
     public class UserMap : ClassMapping<User>

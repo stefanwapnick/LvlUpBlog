@@ -26,7 +26,11 @@ namespace SimpleBlog
                 .Include("~/scripts/jquery.validate.js")
                 .Include("~/scripts/jquery.unobtrusive.js")
                 .Include("~/scripts/bootstrap.js")
-                .Include("~/areas/admin/scripts/forms.js")); 
+                .Include("~/areas/admin/scripts/forms.js"));
+
+            // Admin script for tag selection
+            bundles.Add(new ScriptBundle("~/admin/posts/scripts")
+                .Include("~/areas/admin/scripts/posteditor.js")); 
 
             // Create site script bundle
             bundles.Add(new ScriptBundle("~/scripts")
@@ -34,6 +38,11 @@ namespace SimpleBlog
                 .Include("~/scripts/jquery.validate.js")
                 .Include("~/scripts/jquery.unobtrusive.js")
                 .Include("~/scripts/bootstrap.js")); 
+
+
+
+
+
         }
 
     }
