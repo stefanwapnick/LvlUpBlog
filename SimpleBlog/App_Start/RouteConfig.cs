@@ -16,14 +16,17 @@ namespace SimpleBlog
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // Home Route
+            //------------------------------------------------------------
             routes.MapRoute(
                 name: "Home",
                 url: "",
                 defaults: new { controller = "Posts", action = "Index"},
                 namespaces : namespaces
-                
             );
 
+            // Login Route
+            //------------------------------------------------------------
             routes.MapRoute(
                 name: "Login",
                 url: "login",
@@ -31,12 +34,31 @@ namespace SimpleBlog
                 namespaces : namespaces
             );
 
+            // Logout Route
+            //------------------------------------------------------------
             routes.MapRoute(
                 name: "Logout", 
                 url: "logout",
                 defaults: new {controller="Auth", action="Logout"},
                 namespaces: namespaces
             );
+
+            // Posts Route
+            //------------------------------------------------------------
+            routes.MapRoute("RealPost", "post/{idAndSlug}", new { controller = "Posts", action = "Show" }, namespaces);
+            routes.MapRoute("Post", "post/{id}-{slug}", new { controller = "Posts", action = "Show" }, namespaces);
+
+            // Tags Route
+            //------------------------------------------------------------
+            routes.MapRoute("RealTag", "tag/{idAndSlug}", new { controller = "Posts", action = "Tag" }, namespaces);
+            routes.MapRoute("Tag", "tag/{id}-{slug}", new { controller = "Posts", action = "Tag" }, namespaces);
+
+            // Sidebar sub-controller
+            //------------------------------------------------------------
+            routes.MapRoute("Sidebar", "", new { controller = "SideBar", action = "Index" }, namespaces);
+
+            routes.MapRoute("Error404", "errors/404", new { controller = "Errors", action = "FourHundredError" }, namespaces);
+            routes.MapRoute("Error500", "errors/500", new { controller = "Errors", action = "FiveHundredError" }, namespaces); 
         }
     }
 }

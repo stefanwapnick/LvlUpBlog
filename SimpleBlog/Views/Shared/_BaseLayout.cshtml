@@ -8,43 +8,37 @@
 
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title - Simple Blog</title>
-
 
     @Styles.Render("~/styles")
 </head>
 <body>
-    <div>
+    <div class="site-header">
         <header>
-            <h1>Simple Blog</h1>
-
-            @if (User.Identity.IsAuthenticated)
-            {
-                <p>Welcome back, @User.Identity.Name</p>
-                <a href="@Url.RouteUrl("logout")">Logout</a>
- 
-                if (User.IsInRole("admin"))
-                {
-                    <a href="@Url.Action("Index", "posts", new{area="admin"})">View posts in Admin area</a>
-                }
-            }
-            else
-            {
-                <a href="@Url.RouteUrl("login")">Login</a>
-            }
-
+            <h1 class="page-header">
+                <a href="@Url.RouteUrl("Home")">LvlUp Blog</a>
+                <small>The blog that levels up...</small>
+            </h1>   
         </header>
-          
-
-        @RenderBody()
-       
     </div>
 
-    <footer>
-        <p>&copy; 2015 - Me</p>
-    </footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                @RenderBody()
+            </div>
+            <div class="col-lg-4 sidebar">
+                <!-- Get sidebar from sub-controller -->
+                @Html.Action("Sidebar", "Layout");
+            </div>
+        </div>
 
+        <footer>
+            <p>&copy; @DateTime.UtcNow.Year - LvlUp Blog</p>
+        </footer>
+    </div>
 
     @Scripts.Render("~/scripts")
     @RenderSection("Scripts", required: false)

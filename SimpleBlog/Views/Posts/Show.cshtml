@@ -1,0 +1,11 @@
+﻿@model SimpleBlog.ViewModels.PostsShow
+
+@{
+    ViewBag.Title = Model.Post.Title;
+}
+
+<div class="container">
+    @Html.Partial("_Post", Model.Post)
+</div>
+
+

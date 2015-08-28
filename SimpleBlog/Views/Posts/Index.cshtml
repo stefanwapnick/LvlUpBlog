@@ -1,9 +1,12 @@
-﻿@{
+﻿@model SimpleBlog.ViewModels.PostsIndex
+
+
+@{
     ViewBag.Title = "Home Page";   
 }
 
-<p>
-    <h1>Home Page</h1>
-    <a href="@Url.RouteUrl("login")">Login</a>
+<div class="container">
 
-</p>
+    @Html.Partial("_PartialPosts", Model.Posts)
+
+</div>
