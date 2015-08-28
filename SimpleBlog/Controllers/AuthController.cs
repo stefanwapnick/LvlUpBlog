@@ -34,15 +34,20 @@ namespace SimpleBlog.Controllers
             
             // Check if user exists and if password valid
             if (selectedUser == null || !HashUtility.VerifyPassword(model.Password, selectedUser.Password))
-                ModelState.AddModelError("Name", "Username or password invalid"); 
+            {
+                ModelState.Clear(); 
+                ModelState.AddModelError("Name", "Invalid username or password");
+                ModelState.AddModelError("Password", "");
+                model.Password = ""; 
+            }
 
             if (!ModelState.IsValid)
                 return View(model);
-
+            
             // Set login session
-            FormsAuthentication.SetAuthCookie(selectedUser.Name, true);
             UserCache.CurrentUser = selectedUser;  
-
+            FormsAuthentication.SetAuthCookie(selectedUser.Name, true);
+            
             if (!String.IsNullOrWhiteSpace(returnUrl))
                 return Redirect(returnUrl); 
 

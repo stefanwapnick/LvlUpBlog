@@ -46,7 +46,7 @@ namespace SimpleBlog
 
             // 3. Create session factory
             // -----------------------------------------------------------
-            _sessionFactory = config.BuildSessionFactory(); 
+            _sessionFactory = config.BuildSessionFactory();
         }
 
         /// <summary>

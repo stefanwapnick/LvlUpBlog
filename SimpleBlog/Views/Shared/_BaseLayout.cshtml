@@ -16,29 +16,40 @@
 </head>
 <body>
     <div class="site-header">
-        <header>
+        <header class="container">
             <h1 class="page-header">
                 <a href="@Url.RouteUrl("Home")">LvlUp Blog</a>
-                <small>The blog that levels up...</small>
-            </h1>   
+                <small>The blog that levels up.</small>
+            </h1>
         </header>
+    </div>
+    <div class="site-nav">
+        <nav class="container">
+            <ul class="list-inline">
+                <li><a href="@Url.RouteUrl("login")">Login</a></li>
+                <li><a href="@Url.RouteUrl("login")">Sign Up</a></li>
+            </ul>
+        </nav>
     </div>
 
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
+                <br />
                 @RenderBody()
             </div>
             <div class="col-lg-4 sidebar">
                 <!-- Get sidebar from sub-controller -->
-                @Html.Action("Sidebar", "Layout");
+                @Html.Action("Index", "Sidebar");
             </div>
         </div>
-
-        <footer>
-            <p>&copy; @DateTime.UtcNow.Year - LvlUp Blog</p>
-        </footer>
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; @DateTime.UtcNow.Year - LvlUp Blog</p>
+        </div>
+    </footer>
 
     @Scripts.Render("~/scripts")
     @RenderSection("Scripts", required: false)

@@ -23,11 +23,12 @@ namespace SimpleBlog.ViewModels
         public SidebarTag() { }
     }
 
-    public class SideBarIndex
+    public class SidebarIndex
     {
         public bool IsLoggedIn { get; set; }
         public string Username { get; set; }
         public bool IsAdmin { get; set; }
         public IEnumerable<SidebarTag> Tags { get; set; }
+
     }
 }

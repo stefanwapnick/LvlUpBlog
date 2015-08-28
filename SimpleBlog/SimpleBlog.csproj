@@ -151,6 +151,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\_003_AdminUser.cs" />
     <Compile Include="Models\PagedData.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
@@ -167,13 +168,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AuthViewModel.cs" />
     <Compile Include="ViewModels\PostsViewModel.cs" />
-    <Compile Include="Controllers\SideBarController.cs" />
-    <Compile Include="ViewModels\SideBarViewModels.cs" />
+    <Compile Include="Controllers\SidebarController.cs" />
+    <Compile Include="ViewModels\SidebarViewModels.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Styles\global.css" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
@@ -412,7 +414,7 @@
     <Content Include="Areas\Admin\Scripts\posteditor.js" />
     <Content Include="Content\Styles\admin.css" />
     <Content Include="Content\Styles\bootstrap.css" />
-    <Content Include="Content\Styles\site.css" />
+    <Content Include="Content\Styles\frontend.css" />
     <Content Include="Global.asax" />
     <Content Include="LICENSE.txt" />
     <Content Include="Scripts\bootstrap.js" />

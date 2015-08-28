@@ -28,11 +28,11 @@ namespace SimpleBlog
 
         protected void Application_BeginRequest()
         {
-
+            DatabaseManager.OpenSession(); 
         }
         protected void Application_EndRequest()
         {
-
+            DatabaseManager.CloseSession(); 
         }
 
     }

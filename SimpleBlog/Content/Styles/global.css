@@ -1,0 +1,62 @@
+﻿.site-nav{
+    padding-top : 20px;
+    background : #6F0D18; 
+    
+}
+.site-nav a{
+    color : #eeeeee;
+    text-transform : uppercase;
+    letter-spacing : 1px;
+    font-weight : bold;
+}
+
+.site-nav a:hover{
+    color : orange;
+    text-decoration : none;
+}
+
+.btn-primary{
+    background : #6F0D18;
+    border : 1px solid black;
+    border-radius : 0;
+}
+.btn-primary:hover{
+    background : red;
+}
+
+/* Sticky Footer Section */
+/* ------------------------------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  background: #2C3E50;
+  color : #eeeeee;
+  padding : 20px; 
+}
+
+.field-validation-error{
+    color : red; 
+}
+
+.field-validation-valid{
+    display : none; 
+}
+
+.input-validation-error{
+    border : 1px solid red; 
+    background-color : #ffeeee;  
+}
+
+.validation-summary-errors{
+    color : red; 
+    background : #FFEEEE;
+    padding : 10px; 
+    border-radius : 5px; 
+    margin-bottom : 10px;
+}

@@ -13,12 +13,14 @@ namespace SimpleBlog
             // Create admin css bundle
             bundles.Add(new StyleBundle("~/admin/styles")
                 .Include("~/content/styles/bootstrap.css")
+                .Include("~/content/styles/global.css")
                 .Include("~/content/styles/admin.css"));
 
             // Create site css bundle
             bundles.Add(new StyleBundle("~/styles")
                 .Include("~/content/styles/bootstrap.css")
-                .Include("~/content/styles/site.css"));
+                .Include("~/content/styles/global.css")
+                .Include("~/content/styles/frontend.css"));
 
             // Create admin script bundle
             bundles.Add(new ScriptBundle("~/admin/scripts")
@@ -39,11 +41,6 @@ namespace SimpleBlog
                 .Include("~/scripts/jquery.unobtrusive.js")
                 .Include("~/scripts/bootstrap.js")); 
 
-
-
-
-
         }
-
     }
 }
