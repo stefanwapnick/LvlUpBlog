@@ -1,0 +1,9 @@
+﻿@model LvlUpBlog.ViewModels.PostsShow
+
+@{
+    ViewBag.Title = Model.Post.Title;
+}
+
+@Html.Partial("_PostPartial", Model.Post)
+
+

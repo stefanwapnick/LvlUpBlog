@@ -1,1 +1,0 @@
-..\..\packages\FluentMigrator.1.6.0\tools\Migrate.exe --db=sqlserver --target=..\bin\SimpleBlog.dll --configPath=..\Web.config -c=MainDb -t=rollback
