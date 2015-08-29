@@ -1,53 +1,25 @@
 ﻿@using NHibernate.Linq
 @model SimpleBlog.ViewModels.SidebarIndex
 
-
 @{
     Layout = null;
 }
 
-<div class="panel panel-success">
-    <div class="panel-heading">Site Level</div>
+<div class="panel panel-default">
+    <div class="panel-heading text-center"><strong>Site Level</strong></div>
     <div class="panel-body">
         BLOG LEVEL HERE
     </div>
 </div>
 
-@if (Model.Tags.Any())
-{
-    var maxPostsInTag = Model.Tags.Max(t => t.PostCount);
-    
-    <div class="panel panel-info tags">
-        <div class="panel-heading">Tags</div>
-        <div class="panel-body">
-            <div class="list-group">
-                @foreach (var tag in Model.Tags)
-                {
-                    double percent = Math.Ceiling((double)tag.PostCount/maxPostsInTag * 100);
-                    
-                    <a href="@Url.RouteUrl("Tag", new{tag.Id, tag.Slug})" class="list-group-item">
-                        <span class="name">@tag.Name</span>
-                        <span class="badge">@tag.PostCount</span>
-                        <span class="progress">
-                            <span class="progress-bar progress-bar-info" style="width : @percent"></span>
-                        </span>
-                    </a>
-                }
-            </div>
-
-
-        </div>
-    </div>
-}
-
-@if (Model.IsLoggedIn && Model.IsAdmin)
+@if (Model.IsLoggedIn)
 {
     <div class="panel panel-default">
-        <div class="panel-heading">Welcome back, @Model.Username</div>
+        <div class="panel-heading text-center">User: <strong>@Model.Username</strong> </div>
         <div class="panel-body">
             <div class="btn-group btn-group-sm">
                 <a href="@Url.Action("index", "posts", new { area = "admin" })" class="btn btn-default"> Posts</a>
-                
+
                 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                 </button>
@@ -61,6 +33,35 @@
         </div>
     </div>
 }
+
+@if (Model.Tags.Count() > 0)
+{
+    var maxPostsInTag = Model.Tags.Max(t => t.PostCount);
+    
+    <div class="panel panel-default tags">
+        <div class="panel-heading text-center"><strong>Tags</strong></div>
+        <div class="panel-body">
+            <div class="list-group">
+                @foreach (var tag in Model.Tags)
+                {
+                    double percent = Math.Ceiling((double)tag.PostCount/maxPostsInTag * 100);
+                    
+                    <a href="@Url.RouteUrl("Tag", new{tag.Id, tag.Slug})" class="list-group-item">
+                        <span class="name">@tag.Name</span>
+                        <span class="badge">@tag.PostCount</span>
+                        <span class="progress">
+                            <span class="progress-bar progress-bar-info" style="width : @percent%"></span>
+                        </span>
+                    </a>
+                }
+            </div>
+
+
+        </div>
+    </div>
+}
+
+
 
 
 

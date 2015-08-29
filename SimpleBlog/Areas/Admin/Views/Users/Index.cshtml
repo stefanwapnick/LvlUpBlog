@@ -6,9 +6,9 @@
 
 <div class="container">
     <h1>Users</h1>
-
+    
     <div class="btn-toolbar">
-        <a href="@Url.Action("new")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Create User</a>
+        <a href="@Url.Action("new")" class="btn btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> Create User</a>
     </div>
     
     <table class="table table-striped">
@@ -32,14 +32,14 @@
                     <td>@String.Join(",", user.Roles.Select(r => r.RoleName))</td>
                     <td>
                         <div class="btn-group">
-                            <a href="@Url.Action("edit", new {id=@user.Id})" class="btn btn-sm btn-primary">
-                                <span class="glyphicon glyphicon-pencil"> Edit</span>
+                            <a href="@Url.Action("edit", new {id=@user.Id})" class="btn btn-primary btn-sm">
+                                <i class="glyphicon glyphicon-pencil"></i> Edit
                             </a>
-                            <a href="@Url.Action("changepassword", new {id=@user.Id})" class="btn btn-sm btn-primary">
-                                <span class="glyphicon glyphicon-edit"> Change Password</span>
+                            <a href="@Url.Action("changepassword", new {id=@user.Id})" class="btn btn-primary btn-sm">
+                                <i class="glyphicon glyphicon-star"></i> Change Password
                             </a>
-                            <a href="@Url.Action("delete")" class="btn btn-sm btn-primary" data-post="Really delete @user.Name">
-                                <span class="glyphicon glyphicon-xbt"> Delete</span>
+                            <a href="@Url.Action("delete", new {id=@user.Id})" class="btn btn-primary btn-sm" data-post="Really delete @user.Name">
+                                <i class="glyphicon glyphicon-remove"></i> Delete
                             </a>
                         </div>
                     </td>

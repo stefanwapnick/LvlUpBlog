@@ -15,7 +15,9 @@ namespace SimpleBlog.Infrastructure
             if (currentUser != null)
                 return currentUser.Roles.Select(r => r.RoleName).ToArray(); 
             else
-                return new string[] { }; 
+                return new string[] { };
+
+            //return UserCache.CurrentUser.Roles.Select(r => r.RoleName).ToArray(); 
         }
 
         /* ----------------------------------------------------

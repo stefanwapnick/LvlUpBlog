@@ -1,31 +1,15 @@
-﻿.field-validation-error{
-    color : red; 
-}
-
-.field-validation-valid{
-    display : none; 
-}
-
-.input-validation-error{
-    border : 1px solid red; 
-    background-color : #ffeeee;  
-}
-
-.validation-summary-errors{
-    color : red; 
-}
-
-
-.post-tag-editor .tag-select{
+﻿.post-tag-editor .tag-select{
     list-style : none; 
     padding : 0; 
     margin : 10px 0; 
+
 }
 
 .post-tag-editor .tag-select li{
     margin : 0; 
     padding : 0; 
     border-bottom : 1px dashed #eeeeee; 
+
 }
 
 .post-tag-editor .tag-select li.template{
@@ -36,16 +20,20 @@
     display : block;
     padding : 2px 5px;
     border-left: 20px solid #eeeeee; 
+    border-bottom-left-radius : 5px;
+    border-top-left-radius : 5px;
+        color : #333333; 
 }
 
 /* Hovered over tag */
 .post-tag-editor .tag-select li a:hover{
     text-decoration : none;
-    background : #eeeeee; 
+    background : #FCF8E3; 
+    border-left-color : #6F0D18;
 }
 
 /* Highligted tag */
-.post-tag-editor .tag-select li.tag-select a{
-    background :#d9edf7;
-    border-left-color : #3a87ad;
+.post-tag-editor .tag-select li.selected a{
+    background : #FCF8E3;
+    border-left-color : #6F0D18;
 }

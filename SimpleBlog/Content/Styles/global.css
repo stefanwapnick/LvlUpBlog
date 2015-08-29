@@ -20,9 +20,14 @@
     border : 1px solid black;
     border-radius : 0;
 }
-.btn-primary:hover{
-    background : red;
+.btn-primary:hover, btn-primary.focus, btn-primary:focus{
+    background-color : red;
 }
+
+.clicked{
+    background-color : red; 
+}
+
 
 /* Sticky Footer Section */
 /* ------------------------------------------------------------------------- */
@@ -30,15 +35,22 @@ html {
   position: relative;
   min-height: 100%;
 }
+body{
+   margin-bottom : 70px;        /* Push body up slighly so that footer contents does not overlap */
+}
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
+  /* Optional fixed height of footer */
   background: #2C3E50;
   color : #eeeeee;
   padding : 20px; 
 }
+
+
+/* Field Validation Section*/
+/* ------------------------------------------------------------------------- */
 
 .field-validation-error{
     color : red; 

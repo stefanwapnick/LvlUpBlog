@@ -11,7 +11,7 @@ namespace SimpleBlog.Areas.Admin.ViewModels
     public class RoleCheckbox
     {
         public int Id { get; set; }
-        public bool isChecked { get; set; }
+        public bool IsChecked { get; set; }
         public string RoleName { get; set; }
     }
     

@@ -28,7 +28,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
                 Roles = DatabaseManager.Session.Query<Role>().Select(role => new RoleCheckbox 
                 { 
                     Id = role.Id, 
-                    isChecked = false,
+                    IsChecked = false,
                     RoleName = role.RoleName
                 }).ToList() 
                 
@@ -44,10 +44,16 @@ namespace SimpleBlog.Areas.Admin.Controllers
             // Validate user input to create new user 
             //-----------------------------------------------------------
             if (DatabaseManager.Session.Query<User>().Any(u => u.Name == model.Name))
-                ModelState.AddModelError("Name", "That user already exists!");
+                ModelState.AddModelError("Name", "That user already exists");
 
             if (model.RepeatedPassword != model.Password)
-                ModelState.AddModelError("Password", "Password fields do not match!"); 
+            {
+                ModelState.Clear(); 
+                ModelState.AddModelError("Password", "Password fields do not match");
+                model.Password = "";
+                model.RepeatedPassword = ""; 
+            }
+                
 
             if (!ModelState.IsValid)
                 return View(model);
@@ -77,7 +83,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
                 Roles = DatabaseManager.Session.Query<Role>().Select(role => new RoleCheckbox 
                 { 
                     Id = role.Id, 
-                    isChecked = selectedUser.Roles.Contains(role),
+                    IsChecked = selectedUser.Roles.Contains(role),
                     RoleName = role.RoleName
                 }).ToList() 
             });
@@ -129,7 +135,12 @@ namespace SimpleBlog.Areas.Admin.Controllers
 
             // Check if repeat password and password field match
             if (model.RepeatedPassword != model.Password)
-                ModelState.AddModelError("Password", "Password fields do not match!");           
+            {
+                ModelState.Clear(); 
+                ModelState.AddModelError("Password", "Password fields do not match!");
+                model.RepeatedPassword = "";
+                model.Password = ""; 
+            }
 
             if(!ModelState.IsValid)
                 return View(model);
@@ -169,7 +180,7 @@ namespace SimpleBlog.Areas.Admin.Controllers
                 // Get the checkbox that matches the role id
                 RoleCheckbox checkbox = checkboxes.Single(c => c.Id == role.Id);
                 
-                if (checkbox.isChecked)
+                if (checkbox.IsChecked)
                 {
                     checkbox.RoleName = role.RoleName;
                     selectedRoles.Add(role); 

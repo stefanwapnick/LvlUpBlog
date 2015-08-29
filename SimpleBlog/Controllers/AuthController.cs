@@ -30,8 +30,8 @@ namespace SimpleBlog.Controllers
         public ActionResult Login(AuthLogin model, string returnUrl)
         {
             // Fetch user by name
-            User selectedUser = DatabaseManager.Session.Query<User>().FirstOrDefault(u => u.Name == model.Name);
-            
+            User selectedUser = DatabaseManager.Session.Query<User>().Fetch(u => u.Roles).Where(u => u.Name == model.Name).FirstOrDefault(); 
+
             // Check if user exists and if password valid
             if (selectedUser == null || !HashUtility.VerifyPassword(model.Password, selectedUser.Password))
             {

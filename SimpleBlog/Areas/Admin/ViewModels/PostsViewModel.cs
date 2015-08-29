@@ -28,6 +28,11 @@ namespace SimpleBlog.Areas.Admin.ViewModels
         public string Content { get; set; }
 
         public IList<TagCheckbox> Tags { get; set; }
+
+        public PostsForm()
+        {
+            Tags = new List<TagCheckbox>(); 
+        }
     }
 
     public class TagCheckbox

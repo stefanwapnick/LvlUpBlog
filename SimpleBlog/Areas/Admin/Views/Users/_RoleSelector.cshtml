@@ -13,7 +13,7 @@
 
                     <label for="Roles_@(i)__IsChecked">
                         @Html.CheckBox("Roles[" + i + "].IsChecked", Model[i].IsChecked)
-                        @Model[i].Name
+                        @Model[i].RoleName
                     </label>
                 </li>
             }

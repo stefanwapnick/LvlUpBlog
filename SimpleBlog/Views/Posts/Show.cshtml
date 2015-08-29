@@ -4,8 +4,6 @@
     ViewBag.Title = Model.Post.Title;
 }
 
-<div class="container">
-    @Html.Partial("_Post", Model.Post)
-</div>
+@Html.Partial("_PostPartial", Model.Post)
 
 

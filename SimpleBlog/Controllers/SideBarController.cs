@@ -18,7 +18,7 @@ namespace SimpleBlog.ViewModels
             {
                 IsLoggedIn = UserCache.CurrentUser != null,
                 Username = UserCache.CurrentUser != null ? UserCache.CurrentUser.Name : "",
-                IsAdmin = User.IsInRole("admin"),
+                IsAdmin = UserCache.CurrentUser != null ? UserCache.CurrentUser.Roles.Select(r => r.RoleName).Contains("admin") : false, //User.IsInRole("admin"),
 
                 Tags = DatabaseManager.Session.Query<Tag>().Select(t => new {t.Id, t.Name, t.Slug, PostCount = t.Posts.Count()})
                                         .Where(t => t.PostCount > 0).OrderByDescending(p => p.PostCount)

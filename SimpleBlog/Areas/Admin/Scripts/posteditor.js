@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-
+    
     var $tagEditor = $(".post-tag-editor");
 
     $tagEditor
@@ -14,7 +14,7 @@
             $tagParent.find(".selected-input").val(selected);
         });
 
-    var $addtagButton = $tagEditor.find(".add-tag-button");
+    var $addTagButton = $tagEditor.find(".add-tag-button");
     var $newTagName = $tagEditor.find(".new-tag-name");
 
     // Add tag button
@@ -25,13 +25,14 @@
 
     // Input for entering new tag name
     $newTagName
-        .keyup(function () {
+        .keyup(function (e) {
+
             if ($newTagName.val().trim().length > 0)
                 $addTagButton.prop("disabled", false);      // If text in new tag text box, enable add tag button
             else
                 $addTagButton.prop("disabled", true);
         })
-        .keydown(function () {
+        .keydown(function (e) {
             if (e.which == 13)          // e.which = 13 = enter key, call addTag function
             {
                 e.preventDefault();
@@ -47,17 +48,17 @@
         // Clone template tag. Insert new tag values into cloned template. Insert template at end of tagEditor
         $tagEditor
             .find(".tag-select > li.template")
-            .close()
+            .clone()
             .removeClass("template")
             .addClass("selected")
             .find(".name").text(name).end()
             .find(".name-input").val(name).attr("name", "Tags[" + newIndex + "].Name").end()
-            .find(".selected-input").attr("name", "Tags[" + newIndex + "].IsChecked").end()
+            .find(".selected-input").attr("name", "Tags[" + newIndex + "].IsChecked").val(true).end()
             .appendTo($tagEditor.find(".tag-select"));
 
         // Reset add tag text box
         $newTagName.val("");
-        $addtagButton.prop("disabled", true);
+        $addTagButton.prop("disabled", true);
 
     }
 

@@ -1,10 +1,10 @@
-﻿@model SimpleBlog.Areas.Admin.ViewModels.UsersNew
+﻿@model SimpleBlog.Areas.Admin.ViewModels.UsersEdit
 
 <h1>Edit User @Model.Name</h1>
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary()
+    
     
     <div class="form-group">
         @Html.LabelFor(x => x.Name)
@@ -15,10 +15,12 @@
         @Html.LabelFor(x => x.Email)
         @Html.TextBoxFor( x => x.Email, new { @class = "form-control", type="email"} )
     </div>
+    
+    @Html.ValidationSummary()
 
     @Html.Partial("_RoleSelector", Model.Roles)
 
-    <a href="@Url.Action("Index")" class="btn btn-sm btn-primary">Cancel</a>
-    <input type="submit" value="Edit User" />
+    <a href="@Url.Action("Index")" class="btn btn-primary">Cancel</a>
+    <input type="submit" value="Edit User" class="btn btn-primary" />
     
 }

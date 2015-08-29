@@ -31,10 +31,14 @@
       </ul>
     </nav>
 
-    @RenderBody()
-    
-    <footer class="container">
-        <p>&copy; 2015 - Me</p>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+       <div class="container">
+           <p>&copy; 2015 - LvlUp Blog</p>
+       </div>
     </footer>
 
     @Scripts.Render("~/admin/scripts")
