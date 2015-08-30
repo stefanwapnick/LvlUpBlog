@@ -10,7 +10,7 @@
     <div class="panel-body level-panel">
         <h2>Level @Model.SiteLevel.Tier <small> @Model.SiteLevel.Name </small></h2>
         <hr />
-        <div class="text-center"><img src="@Model.SiteLevel.ImagePath.Substring(2)" class="level-image" /></div><br />
+        <div class="text-center"><img src="@Model.SiteLevel.ImagePath.Substring(1)" class="level-image" /></div><br />
         <table class="table">
             <tr><td>Posts:</td><td>@Model.SitePosts / @Model.SiteLevel.AmountToNext</td></tr>
             <tr><td>Comments:</td><td>@Model.SiteComments</td></tr>
@@ -31,14 +31,14 @@
         <div class="panel-body level-panel">
             <h2>Level @Model.UserLevel.Tier <small> @Model.UserLevel.Name </small></h2>
             <hr />
-            <div class="text-center"><img src="@Model.UserLevel.ImagePath.Substring(2)" class="level-image" /></div><br />
+            <div class="text-center"><img src="@Model.UserLevel.ImagePath.Substring(1)" class="level-image" /></div><br />
             <table class="table">
                 <tr><td>Posts:</td><td>@Model.UserPosts / @Model.UserLevel.AmountToNext</td></tr>
                 <tr><td>Comments:</td><td>@Model.UserComments</td></tr>
             </table>
             <span>Level Meter:</span>
             @{
-                double userLevelPercent = Math.Ceiling((double)@Model.SitePosts / @Model.SiteLevel.AmountToNext * 100);
+                double userLevelPercent = Math.Ceiling((double)@Model.UserPosts / @Model.UserLevel.AmountToNext * 100);
                 <div class="progress"><div class="progress-bar progress-bar-danger" style="width: @(userLevelPercent)%;  color: black;"></div></div>
             }
         </div>

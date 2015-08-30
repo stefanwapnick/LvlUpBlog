@@ -9,13 +9,14 @@ using LvlUpBlog.Areas.Admin.ViewModels;
 
 namespace LvlUpBlog.Areas.Admin.Controllers
 {
-    [Authorize(Roles="admin")]
+    [Authorize]
     public class PostsController : Controller
     {
+
         public ActionResult Index(int page = 1)
         {
-            const int POSTS_PER_PAGE = 5;
-
+            const int POSTS_PER_PAGE = 15;
+            
             // Get total number of posts in database
             int totalPostCount = DatabaseManager.Session.Query<Post>().Count();
 
@@ -52,7 +53,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
                 }).ToList()
             }); 
         }
-
+            
         public ActionResult Edit(int id)
         {
             Post post = DatabaseManager.Session.Load<Post>(id);
@@ -89,7 +90,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
 
             if (model.IsNew)       // Create new post
             {
-                post = new Post() { CreatedAt = DateTime.UtcNow, User = UserCache.CurrentUser };
+                post = new Post() { CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow, User = UserCache.CurrentUser };
 
                 foreach (Tag tag in selectedTags)
                     post.Tags.Add(tag); 

@@ -1,5 +1,11 @@
 ﻿@model LvlUpBlog.Areas.Admin.ViewModels.UsersNew
 
+@{
+    ViewBag.SelectedLink = "new";
+    ViewBag.Title = "New User"; 
+    ViewBag.Sidebar = false; 
+}
+
 <h1>Create A New User</h1>
 
 @using (Html.BeginForm())
@@ -26,9 +32,16 @@
         @Html.TextBoxFor(x => x.RepeatedPassword, new { @class = "form-control", type = "password" })
     </div>
 
-    @Html.Partial("_RoleSelector", Model.Roles)
-    
-    <a href="@Url.Action("Index")" class="btn btn-primary">Cancel</a>
+    if(User.Identity.IsAuthenticated && User.IsInRole("admin"))
+    {
+        @Html.Partial("_RoleSelector", Model.Roles)
+        <a href="@Url.Action("index")" class="btn btn-primary">Cancel</a>
+    }
+    else
+    {
+        <a href="@Url.RouteUrl("home")" class="btn btn-primary">Cancel</a>
+    }
+
     <input type="submit" value="Create User" class="btn btn-primary" />
     
 }

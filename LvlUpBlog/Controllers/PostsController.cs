@@ -13,13 +13,18 @@ namespace LvlUpBlog.Controllers
     public class PostsController : Controller
     {
 
-        private const int POSTS_PER_PAGE = 10; 
+        private const int POSTS_PER_PAGE = 15; 
 
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(string search, int page = 1)
         {
-            var baseQuery =  DatabaseManager.Session.Query<Post>()
-                                    .Where(p => p.DeletedAt == null)
-                                    .OrderByDescending(p => p.CreatedAt);
+
+            var baseQuery = DatabaseManager.Session.Query<Post>()
+                                    .Where(p => p.DeletedAt == null);
+                                    
+            if (search != null)
+                baseQuery = baseQuery.Where(p => p.Title.Contains(search)); 
+
+            baseQuery = baseQuery.OrderByDescending(p => p.CreatedAt);
 
             int totalPosts = baseQuery.Count(); 
 
@@ -35,7 +40,8 @@ namespace LvlUpBlog.Controllers
 
             return View(new PostsIndex
             {
-                Posts = new PagedData<Post>(posts, totalPosts, page, POSTS_PER_PAGE)
+                Posts = new PagedData<Post>(posts, totalPosts, page, POSTS_PER_PAGE),
+                Search = search
             });
         }
 
@@ -74,6 +80,30 @@ namespace LvlUpBlog.Controllers
 
         }
 
+        public ActionResult Show(string id, string slug)
+        {
+            // Check if id and slug are present and id is a valid number
+            if (String.IsNullOrWhiteSpace(id) || !Regex.IsMatch(id, @"^\d+$") || String.IsNullOrWhiteSpace(slug))
+                return HttpNotFound();
+
+            int idNum = Int32.Parse(id); 
+            Post post = DatabaseManager.Session.Load<Post>(idNum);
+
+            if (post == null || post.IsDeleted)
+                return HttpNotFound();
+
+            // If invalid slug, redirect to correct slug with id
+            if (post.Slug != slug)
+                return RedirectToRoutePermanent("Post", new { id = idNum, slug = post.Slug });
+
+            return View(new PostsShow
+            {
+                Post = post
+            });
+
+        }
+
+        /*
         public ActionResult Show(string idAndSlug)
         {
             Tuple<int, string> parts = SeperateIdAndSlug(idAndSlug);
@@ -94,7 +124,7 @@ namespace LvlUpBlog.Controllers
                 Post = post
             });
 
-        }
+        }*/
 
         private Tuple<int, string> SeperateIdAndSlug(string idAndSlug)
         {

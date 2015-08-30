@@ -10,9 +10,10 @@ using LvlUpBlog.Infrastructure;
 
 namespace LvlUpBlog.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "admin")]
+    
     public class UsersController : Controller
     {
+        [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
             return View(new UsersIndex(){
@@ -69,6 +70,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             User selectedUser = DatabaseManager.Session.Load<User>(id);
@@ -89,6 +91,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
             });
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public ActionResult Edit(int id, UsersEdit model)
         {
@@ -114,7 +117,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
             return RedirectToAction("Index");  
 
         }
-
+        [Authorize(Roles = "admin")]
         public ActionResult ChangePassword(int id)
         {
             // Load user of given id from database
@@ -124,7 +127,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
 
             return View(new UsersChangePassword(){Name = selectedUser.Name});
         }
-
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public ActionResult ChangePassword(int id, UsersChangePassword model)
         {
@@ -152,7 +155,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
             return RedirectToAction("index");  
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
             // Load user of given id from database

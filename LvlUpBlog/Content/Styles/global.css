@@ -1,7 +1,6 @@
 ﻿.site-nav{
-    padding-top : 20px;
+    padding-top : 18px;
     background : #6F0D18; 
-    
 }
 .site-nav a{
     color : #eeeeee;
@@ -14,19 +13,28 @@
     color : orange;
     text-decoration : none;
 }
+.site-nav li.active a{
+    border-bottom: 2px solid white; 
+    border-top: 2px solid white;
+}
+.site-nav li.active a:hover{
+    border-bottom: 2px solid orange; 
+    border-top: 2px solid orange;
+}
 
 .btn-primary{
     background : #6F0D18;
     border : 1px solid black;
     border-radius : 0;
 }
-.btn-primary:hover, btn-primary.focus, btn-primary:focus{
+.btn-primary:hover{
     background-color : red;
 }
 
-.clicked{
-    background-color : red; 
+.btn-primary[disabled], .btn-primary[disabled]:hover{
+    background : gray;
 }
+
 
 
 /* Sticky Footer Section */

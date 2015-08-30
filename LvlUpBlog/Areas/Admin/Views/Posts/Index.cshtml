@@ -1,10 +1,11 @@
-﻿@model LvlUpBlog.Areas.Admin.ViewModels.PostsIndex
+﻿@using System.Web.Optimization
+@model LvlUpBlog.Areas.Admin.ViewModels.PostsIndex
 
 @{
-    ViewBag.SelectedTab = "posts";
+    ViewBag.Title = "View Posts";
+    ViewBag.SelectedLink = "posts";
 }
 
-<div class="container">
     <h1>Posts</h1>
 
     <div class="btn-toolbar">
@@ -19,7 +20,7 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Tags</th>
-                <th>Date</th>
+                <th>Date Created (UTC)</th>
                 <th>Actions</th>
             </tr>
 
@@ -33,7 +34,7 @@
                     <td>@post.Title</td>
                     <td>@post.User.Name</td>
                     <td>@String.Join(", ", post.Tags.Select(x => x.Name))</td>
-                    <td>@post.CreatedAt (UTC)</td>
+                    <td>@post.CreatedAt</td>
                     <td>
                         <a href="@Url.Action("edit", new { post.Id})" class="btn btn-xs btn-primary">
                             <span class="glyphicon glyphicon-edit"></span> Edit
@@ -82,5 +83,7 @@
         }
     </div>
 
-</div>
-
+@section Scripts
+{
+    @Scripts.Render("~/admin/scripts")
+}

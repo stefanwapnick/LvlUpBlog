@@ -5,15 +5,24 @@
     Layout = null;
 }
 
+@helper LinkSelect(string link) 
+{ 
+    if (link == ViewBag.SelectedLink)
+    {
+        @:active
+    }    
+}
+
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title - Simple Blog</title>
+    <title>@ViewBag.Title - LvlUp Blog</title>
 
     @Styles.Render("~/styles")
+    @RenderSection("Styles", required: false)
 
 </head>
 <body>
@@ -30,20 +39,21 @@
         <nav class="container">
             <ul class="list-inline list-padding">
                 
-                <li><a href="@Url.RouteUrl("home")">Home</a></li>
+                <li class="@LinkSelect("home")"><a href="@Url.RouteUrl("home")">Browse</a></li>
 
                 @if (UserCache.CurrentUser == null)
                 {
-                    <li><a href="@Url.RouteUrl("login")"> Login</a></li>
-                    <li><a href="@Url.Action("new", "users", new {area = "admin"})"> Sign Up</a></li>
+                    <li class="@LinkSelect("login")"><a href="@Url.RouteUrl("login")"> Login</a></li>
+                    <li class="@LinkSelect("new")"><a href="@Url.Action("new", "users", new {area = "admin"})"> Sign Up</a></li>
                 }
                 else
                 {
-                    <li><a href="@Url.Action("index", "posts", new {area = "admin"})"> My Posts</a></li>
+                    <li class="@LinkSelect("posts")"><a href="@Url.Action("index", "posts", new {area = "admin"})"> My Posts</a></li>
                     if (UserCache.CurrentUser.Roles.Select(r => r.RoleName).Contains("admin"))
                     {
-                        <li><a href="@Url.Action("index", "users", new {area = "admin"})"> View Users</a></li>
+                        <li class="@LinkSelect("users")"><a href="@Url.Action("index", "users", new {area = "admin"})"> View Users</a></li>
                     }
+                    <li class="@LinkSelect("account")"><a href="@Url.RouteUrl("account")"> Account</a></li>
                     <li><a href="@Url.RouteUrl("logout")"> Logout</a></li>
                 }
 
@@ -54,14 +64,23 @@
     <div class="container">
         <div class="row">
             <br />
-            <div class="col-md-4 col-md-push-8 sidebar">
-                <!-- Get sidebar from sub-controller -->
-                @Html.Action("Index", "Sidebar")
-            </div>
-            <div class="col-md-8 col-md-pull-4">
-                @RenderBody()
-            </div>
 
+            @if(ViewBag.Sidebar != null)
+            { 
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+            }
+            else
+            {
+                <div class="col-md-4 col-md-push-8 sidebar">
+                    <!-- Get sidebar from sub-controller -->
+                    @Html.Action("Index", "Sidebar", new { area = "" })
+                </div>
+                <div class="col-md-8 col-md-pull-4">
+                    @RenderBody()
+                </div>
+            }
         </div>
     </div>
 

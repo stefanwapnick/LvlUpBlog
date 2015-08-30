@@ -43,10 +43,10 @@ namespace LvlUpBlog
                 namespaces: namespaces
             );
 
-            // Posts Route
+            // Post View Route
             //------------------------------------------------------------
-            routes.MapRoute("RealPost", "post/{idAndSlug}", new { controller = "Posts", action = "Show" }, namespaces);
             routes.MapRoute("Post", "post/{id}-{slug}", new { controller = "Posts", action = "Show" }, namespaces);
+            //routes.MapRoute("Post", "post/{id}-{slug}", new { controller = "Posts", action = "Show" }, namespaces);
 
             // Tags Route
             //------------------------------------------------------------

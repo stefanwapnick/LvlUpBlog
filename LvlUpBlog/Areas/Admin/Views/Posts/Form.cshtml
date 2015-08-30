@@ -1,5 +1,9 @@
 ﻿@using System.Web.Optimization
 @model LvlUpBlog.Areas.Admin.ViewModels.PostsForm
+@{
+    ViewBag.Title = "Create Post";
+    ViewBag.Sidebar = false; 
+}
 
 <h1>@(Model.IsNew ? "Create Post" : "Update Post " + Model.Title )</h1>
 
@@ -30,15 +34,8 @@
 
 
         <div class="col-md-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Post Actions</div>
-                <div class="panel-body">
-                    <input type="submit" value="@(Model.IsNew ? "PublishPost" : "Update Post")" class="btn btn-primary btn-sm" /> 
-                    <a href="@Url.Action("index")" class="btn btn-primary btn-sm">Back</a>
-                </div>
-            </div>
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
                 <div class="panel-heading">Tags</div>
                 <div class="panel-body post-tag-editor">
                     <label for="new-tag-name">New Tag:</label>
@@ -77,15 +74,24 @@
             </div>
         </div>
     </div>
-       
+
+    <a href="@Url.Action("index")" class="btn btn-primary">Back</a>
+    <input type="submit" value="@(Model.IsNew ? "PublishPost" : "Update Post")" class="btn btn-primary" />
+    
 }
 
 @section Scripts
 {
     @Scripts.Render("~/admin/posts/scripts")
-    
+    @Scripts.Render("~/admin/scripts")
+
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace("Content");
     </script>
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/Content/Styles/admin.css">
 }

@@ -2,7 +2,31 @@
 
 
 @{
-    ViewBag.Title = "Home Page";   
+    ViewBag.SelectedLink = "home";
+    ViewBag.Title = "Home";   
 }
+
+@using(Html.BeginForm("index", "posts", FormMethod.Get)){
+    <div class="input-group">
+        @Html.TextBox("search", null, new { @class="form-control", placeholder="Search for..."  })
+
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary" value="Search"><span class="glyphicon glyphicon-search"></span> Search</button>
+        </span>
+    </div>
+
+    if(Model.Search != null)
+    {
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            Showing posts containing <strong>@Model.Search</strong> (@(Model.Posts.Count()) results)
+            <a href="@Url.RouteUrl("Home")" class="pull-right">Clear Search</a>
+        </div>
+    </div>
+    }
+
+    <br />
+}
+
 
 @Html.Partial("_PostsPartial", Model.Posts)

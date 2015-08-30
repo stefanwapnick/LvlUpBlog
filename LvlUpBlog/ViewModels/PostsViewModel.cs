@@ -15,6 +15,7 @@ namespace LvlUpBlog.ViewModels
     public class PostsIndex
     {
         public PagedData<Post> Posts { get; set; }
+        public String Search { get; set; }
     }
 
     public class PostsShow

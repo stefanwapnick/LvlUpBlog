@@ -17,25 +17,36 @@
 
 .site-header a{
     color: #ffffff; 
-    text-decoration : none; 
+    text-decoration : none;
 }
 
 .post{
     margin-bottom : 20px; 
+    padding : 10px;
+  -moz-box-shadow:    1px 1px 1px 1px #ccc;
+  -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+  box-shadow:         1px 1px 1px 1px #ccc;
 }
 
-.post > h1{
+.post > header > a > h1{
     font-size : 18pt; 
-    padding : 0; 
+    padding : 0;
     margin : 0; 
     margin-bottom : 5px; 
     height : 40px; 
     line-height : 40px; 
 }
 
-.post > h1 > a{
+.post > header > a{
     color : #D9534F;
+    text-decoration : none;
 }
+
+.post:hover{
+    background : #F2DEDE;
+}
+
+
 
 .sidebar .tags .list-group{
     margin : 0; 
@@ -80,14 +91,13 @@
     background : transparent; 
 }
 
-
-
 .post footer{
-    background : #eeeeee; 
+    background : #eeeeee;
     padding : 10px; 
     overflow : hidden; 
     font-size : 10px;
-    color : #999999; 
+    color : #777777; 
+    /* border-bottom : 1px dashed #777777;*/
 }
 
 .post .tags{
@@ -96,6 +106,9 @@
 }
 
 .post .tags li{
-    float : left; 
-    margin-right : -5px; 
+    float : left;
+    margin-left : 2px; 
+}
+.post .tags li > a:hover{
+    background : #6F0D18;
 }

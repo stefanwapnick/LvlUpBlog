@@ -1,0 +1,25 @@
+﻿@model LvlUpBlog.Models.Post
+
+
+<article class="post">
+    <header>
+        <a href="@Url.RouteUrl("Post", new { id = Model.Id, slug = Model.Slug })">
+            <span class="pull-right"><br />0 Comments</span>
+            <h1>@Model.Title</h1>
+        </a>
+    </header>
+
+    <footer>
+        <ul class="pull-right list-unstyled tags">
+
+            @foreach (var tag in Model.Tags)
+            {
+                <li> <a class="badge" href="@Url.RouteUrl("Tag", new { id = tag.Id, slug = tag.Slug })">@tag.Name</a> </li>
+            }
+        </ul>
+
+        Posted by <strong> @(Model.User.Name) </strong> on <strong>@(Model.CreatedAt.ToString())</strong> (UTC)
+    </footer>
+
+</article>
+
