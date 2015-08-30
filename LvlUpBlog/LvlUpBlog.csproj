@@ -151,7 +151,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\_005_InitializeLevels.cs" />
+    <Compile Include="Migrations\_004_Levels.cs" />
     <Compile Include="Migrations\_003_AdminUser.cs" />
+    <Compile Include="Models\Level.cs" />
+    <Compile Include="Models\LevelFetcher.cs" />
     <Compile Include="Models\PagedData.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
@@ -175,6 +179,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Images\placeholder.png" />
     <Content Include="Content\Styles\global.css" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />

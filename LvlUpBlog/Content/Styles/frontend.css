@@ -1,5 +1,5 @@
 ﻿.site-header{
-    background : #2c3e50;
+    background : #4B4B4B;
     color : #eeeeee; 
 }
 
@@ -20,13 +20,21 @@
     text-decoration : none; 
 }
 
+.post{
+    margin-bottom : 20px; 
+}
+
 .post > h1{
-    font-size : 16pt; 
+    font-size : 18pt; 
     padding : 0; 
     margin : 0; 
     margin-bottom : 5px; 
     height : 40px; 
     line-height : 40px; 
+}
+
+.post > h1 > a{
+    color : #D9534F;
 }
 
 .sidebar .tags .list-group{
@@ -50,11 +58,11 @@
 }
 
 .sidebar .tags .list-group a:hover{
-    background : #dddddd; 
+    background : #F2DEDE; 
 }
 
 .sidebar .tags .progress-bar{
-    background : #dddddd;
+    background : #F2DEDE;
     border : none; 
     box-shadow : none; 
 }
@@ -72,16 +80,14 @@
     background : transparent; 
 }
 
-.post{
-    margin-bottom : 20px; 
-}
+
 
 .post footer{
     background : #eeeeee; 
     padding : 10px; 
     overflow : hidden; 
     font-size : 10px;
-    color : #aaaaaa; 
+    color : #999999; 
 }
 
 .post .tags{

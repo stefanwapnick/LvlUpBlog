@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using LvlUpBlog.Models; 
 
 namespace LvlUpBlog.ViewModels
 {
@@ -28,6 +29,12 @@ namespace LvlUpBlog.ViewModels
         public bool IsLoggedIn { get; set; }
         public string Username { get; set; }
         public bool IsAdmin { get; set; }
+        public int SitePosts { get; set; }
+        public int SiteComments { get; set; }
+        public int UserPosts { get; set; }
+        public int UserComments { get; set; }
+        public Level SiteLevel { get; set; }
+        public Level UserLevel { get; set; }
         public IEnumerable<SidebarTag> Tags { get; set; }
 
     }

@@ -41,6 +41,7 @@ namespace LvlUpBlog
             mapper.AddMapping<RoleMap>();
             mapper.AddMapping<PostMap>();
             mapper.AddMapping<TagMap>();
+            mapper.AddMapping<LevelMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities()); 
 

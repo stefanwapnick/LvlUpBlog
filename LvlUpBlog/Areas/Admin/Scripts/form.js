@@ -7,9 +7,10 @@
         var message = $(this).data("post");
 
         // Check if message exists and ask user to confirm
-        if (!confirm(message))
-            return;
-
+        if (message != "") {
+            if (!confirm(message))
+                return;
+        }
         // Submit post request using path in href
         /* $.ajax({
             type : 'POST',    

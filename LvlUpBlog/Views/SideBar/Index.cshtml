@@ -6,30 +6,41 @@
 }
 
 <div class="panel panel-default">
-    <div class="panel-heading text-center"><strong>Site Level</strong></div>
-    <div class="panel-body">
-        BLOG LEVEL HERE
+    <div class="panel-heading text-center"><strong>Site Statistics</strong></div>
+    <div class="panel-body level-panel">
+        <h2>Level @Model.SiteLevel.Tier <small> @Model.SiteLevel.Name </small></h2>
+        <hr />
+        <div class="text-center"><img src="@Model.SiteLevel.ImagePath.Substring(2)" class="level-image" /></div><br />
+        <table class="table">
+            <tr><td>Posts:</td><td>@Model.SitePosts / @Model.SiteLevel.AmountToNext</td></tr>
+            <tr><td>Comments:</td><td>@Model.SiteComments</td></tr>
+        </table>
+        <span>Level Meter:</span>
+        @{
+            double siteLevelPercent = Math.Ceiling((double)@Model.SitePosts / @Model.SiteLevel.AmountToNext * 100);
+            <div class="progress"><div class="progress-bar progress-bar-danger" style="width: @(siteLevelPercent)%;  color: black;"></div></div>
+        }
+
     </div>
 </div>
 
 @if (Model.IsLoggedIn)
 {
     <div class="panel panel-default">
-        <div class="panel-heading text-center">User: <strong>@Model.Username</strong> </div>
-        <div class="panel-body">
-            <div class="btn-group btn-group-sm">
-                <a href="@Url.Action("index", "posts", new { area = "admin" })" class="btn btn-default"> Posts</a>
-
-                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="@Url.Action("new", "posts", new {area = "admin"})"> </a>
-                    </li>
-                </ul>
-            </div>
+        <div class="panel-heading text-center"><strong>User: @Model.Username</strong> </div>
+        <div class="panel-body level-panel">
+            <h2>Level @Model.UserLevel.Tier <small> @Model.UserLevel.Name </small></h2>
+            <hr />
+            <div class="text-center"><img src="@Model.UserLevel.ImagePath.Substring(2)" class="level-image" /></div><br />
+            <table class="table">
+                <tr><td>Posts:</td><td>@Model.UserPosts / @Model.UserLevel.AmountToNext</td></tr>
+                <tr><td>Comments:</td><td>@Model.UserComments</td></tr>
+            </table>
+            <span>Level Meter:</span>
+            @{
+                double userLevelPercent = Math.Ceiling((double)@Model.SitePosts / @Model.SiteLevel.AmountToNext * 100);
+                <div class="progress"><div class="progress-bar progress-bar-danger" style="width: @(userLevelPercent)%;  color: black;"></div></div>
+            }
         </div>
     </div>
 }

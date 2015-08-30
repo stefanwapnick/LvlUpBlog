@@ -72,3 +72,30 @@ body{
     border-radius : 5px; 
     margin-bottom : 10px;
 }
+
+.panel-default .panel-heading{
+    background-color : #4B4B4B;
+    color : white;
+}
+
+.level-panel h2{
+    margin-top : 0;
+}
+
+.level-panel .progress{
+    height: 30px;
+}
+
+.level-panel .table{
+    margin-bottom : 5px;
+}
+
+.level-image{
+    height : 100px; 
+    width : 100px; 
+}
+
+
+.list-padding li{
+    margin-right : 5px;
+}
