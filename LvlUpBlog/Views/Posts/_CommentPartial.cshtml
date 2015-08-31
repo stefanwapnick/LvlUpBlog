@@ -1,0 +1,24 @@
+﻿@model LvlUpBlog.Models.Comment
+
+<article class="comment">
+    <div class="row">
+        <div class="col-xs-2 text-center comment-header">
+            <span class="glyphicon glyphicon-user"></span>
+            <br /> @Model.DateCreated.Date.ToString("D")
+            <br /> @Model.DateCreated.TimeOfDay.ToString()
+
+            @if (User.Identity.Name == Model.User.Name || User.IsInRole("admin"))
+            {
+                <a href="@Url.Action("deletecomment", new { commId = Model.Id})" data-comment-delete="Delete comment?" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-remove"></i></a>
+            }
+               
+            <a href="@Url.Action("index")">test</a>
+        </div>
+        <div class="col-xs-9 comment-body">
+            <h4>@Model.User.Name says:</h4>
+            @Model.Content
+        </div>
+    </div>
+    <br />
+</article>
+

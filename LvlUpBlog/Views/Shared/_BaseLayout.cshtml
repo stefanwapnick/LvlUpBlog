@@ -53,7 +53,7 @@
                     {
                         <li class="@LinkSelect("users")"><a href="@Url.Action("index", "users", new {area = "admin"})"> View Users</a></li>
                     }
-                    <li class="@LinkSelect("account")"><a href="@Url.RouteUrl("account")"> Account</a></li>
+                    <li class="@LinkSelect("account")"><a href="@Url.Action("account", "users", new { area = "admin" })"> Account</a></li>
                     <li><a href="@Url.RouteUrl("logout")"> Logout</a></li>
                 }
 

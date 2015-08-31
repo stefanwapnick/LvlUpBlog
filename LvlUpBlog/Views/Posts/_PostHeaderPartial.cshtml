@@ -4,7 +4,7 @@
 <article class="post">
     <header>
         <a href="@Url.RouteUrl("Post", new { id = Model.Id, slug = Model.Slug })">
-            <span class="pull-right"><br />0 Comments</span>
+            <span class="pull-right"><br />@Model.Comments.Count() Comments</span>
             <h1>@Model.Title</h1>
         </a>
     </header>
@@ -18,8 +18,7 @@
             }
         </ul>
 
-        Posted by <strong> @(Model.User.Name) </strong> on <strong>@(Model.CreatedAt.ToString())</strong> (UTC)
+       <i class="glyphicon glyphicon-time"></i> Posted by <strong> @(Model.User.Name) </strong> on <strong>@(Model.CreatedAt.ToString())</strong> (UTC)
     </footer>
 
 </article>
-

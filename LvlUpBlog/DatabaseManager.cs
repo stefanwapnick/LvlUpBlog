@@ -42,6 +42,7 @@ namespace LvlUpBlog
             mapper.AddMapping<PostMap>();
             mapper.AddMapping<TagMap>();
             mapper.AddMapping<LevelMap>();
+            mapper.AddMapping<CommentMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities()); 
 

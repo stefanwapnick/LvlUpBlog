@@ -20,6 +20,14 @@ namespace LvlUpBlog.Areas.Admin.Controllers
                 Users = DatabaseManager.Session.Query<User>().ToList()
             });
         }
+        [Authorize]
+        public ActionResult Account()
+        {
+            if (UserCache.CurrentUser == null)
+                return HttpNotFound(); 
+
+            return View(UserCache.CurrentUser);
+        }
 
         public ActionResult New()
         {

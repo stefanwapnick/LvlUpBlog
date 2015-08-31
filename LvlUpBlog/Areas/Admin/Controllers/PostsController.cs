@@ -12,22 +12,27 @@ namespace LvlUpBlog.Areas.Admin.Controllers
     [Authorize]
     public class PostsController : Controller
     {
+        private const int POSTS_PER_PAGE = 15;
 
         public ActionResult Index(int page = 1)
         {
-            const int POSTS_PER_PAGE = 15;
+            var baseQuery = DatabaseManager.Session.Query<Post>();
+
+            // If not admin status, then only display posts for given user
+            if (! User.IsInRole("admin"))
+                baseQuery = baseQuery.Where(p => p.User.Name == User.Identity.Name);
             
             // Get total number of posts in database
-            int totalPostCount = DatabaseManager.Session.Query<Post>().Count();
+            int totalPostCount = baseQuery.Count();
 
-            List<int> postIds = DatabaseManager.Session.Query<Post>()
+            List<int> postIds = baseQuery
                 .OrderByDescending(p => p.CreatedAt)
                 .Skip((page - 1) * POSTS_PER_PAGE)               // if one page 2, skip 1 * 5 = 5 posts in database. Take POSTS_PER_PAGE count starting on this page
                 .Take(POSTS_PER_PAGE)
                 .Select(p => p.Id)
-                .ToList(); 
+                .ToList();
 
-            List<Post> pagePosts = DatabaseManager.Session.Query<Post>()
+            List<Post> pagePosts = baseQuery
                 .Where(p => postIds.Contains(p.Id))
                 .OrderByDescending(p => p.CreatedAt)
                 .FetchMany(p => p.Tags)             // Fetch tags associated with post
@@ -135,7 +140,7 @@ namespace LvlUpBlog.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Comm(int id)
         {
             Post post = DatabaseManager.Session.Load<Post>(id);
             if (post == null)

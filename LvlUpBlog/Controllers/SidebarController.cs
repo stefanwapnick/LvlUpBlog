@@ -33,8 +33,8 @@ namespace LvlUpBlog.ViewModels
                 
                 SitePosts = sitePosts,
                 UserPosts = userPosts, 
-                SiteComments = 0, 
-                UserComments = 0
+                SiteComments = DatabaseManager.Session.Query<Comment>().Count(), 
+                UserComments = UserCache.CurrentUser != null ? DatabaseManager.Session.Query<Comment>().Where(x => x.User.Name == UserCache.CurrentUser.Name).Count() : 0
             }); 
         }
     }

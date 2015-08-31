@@ -15,27 +15,22 @@ namespace LvlUpBlog.Models
 
         public static User CurrentUser
         {
-            /*
             get {
-                if (!HttpContext.Current.User.Identity.IsAuthenticated)
-                    return null; 
-
-                User currentUser = HttpContext.Current.Items[USER_KEY] as User;
-
-                if (currentUser == null)
-                {
-                    currentUser = DatabaseManager.Session.Query<User>().FirstOrDefault(u => u.Name == HttpContext.Current.User.Identity.Name);
-
-                    if (currentUser == null)
+                    if (!HttpContext.Current.User.Identity.IsAuthenticated)
                         return null;
 
-                    HttpContext.Current.Items[USER_KEY] = currentUser; 
+                    User currentUser = HttpContext.Current.Session[USER_KEY] as User;
+
+                    // If session variable empty but ASP.NET authentication system has logged in, then current user should be set
+                    if (currentUser == null)
+                    {
+                        currentUser = DatabaseManager.Session.Query<User>().FirstOrDefault(u => u.Name == HttpContext.Current.User.Identity.Name);
+                        HttpContext.Current.Session[USER_KEY] = currentUser; 
+                    }
+
+                    return currentUser;
                 }
 
-                return currentUser; 
-            }*/
-
-            get { return HttpContext.Current.Session[USER_KEY] as User; }
             set { HttpContext.Current.Session[USER_KEY] = value; }
         }
 

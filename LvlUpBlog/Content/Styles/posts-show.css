@@ -62,9 +62,13 @@
 .comment .comment-body{
     background: #F9F5F0;
     font-size: 0.9em;
-    padding: 10px;
+    padding : 0px 10px 10px 10px;
 }
 
+.comment a[data-comment-delete]{
+    position : absolute; 
+    top: 0;
+}
 
 .comment .comment-header{
     font-size: 0.8em;
@@ -73,7 +77,6 @@
 .comment .comment-header > span{
     font-size: 35px;
 }
-
 
 .tall-button{
    height:68px; 

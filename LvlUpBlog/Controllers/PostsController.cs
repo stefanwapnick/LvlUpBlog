@@ -98,9 +98,44 @@ namespace LvlUpBlog.Controllers
 
             return View(new PostsShow
             {
-                Post = post
+                Post = post,
+                PostId = post.Id
             });
 
+        }
+
+        [HttpPost]
+        public ActionResult Show(string id, string slug, PostsShow model)
+        {
+            Post selectedPost = DatabaseManager.Session.Load<Post>(model.PostId);
+
+            Comment comment = new Comment
+            {
+                Content = model.CommentContent,
+                DateCreated = DateTime.UtcNow,
+                User = UserCache.CurrentUser,
+            };
+
+            // Save new comment
+            //DatabaseManager.Session.Save(comment);
+
+            selectedPost.Comments.Add(comment);
+
+            // Update post
+            DatabaseManager.Session.SaveOrUpdate(selectedPost);
+        
+            return RedirectToAction("show");
+        }
+
+        public ActionResult DeleteComment(int commId)
+        {
+            Comment comment = DatabaseManager.Session.Load<Comment>(commId);
+            if (comment == null)
+                return HttpNotFound();
+
+            DatabaseManager.Session.Delete(comment);
+
+            return RedirectToAction("show");
         }
 
         /*

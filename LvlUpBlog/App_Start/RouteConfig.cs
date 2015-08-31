@@ -46,7 +46,7 @@ namespace LvlUpBlog
             // Post View Route
             //------------------------------------------------------------
             routes.MapRoute("Post", "post/{id}-{slug}", new { controller = "Posts", action = "Show" }, namespaces);
-            //routes.MapRoute("Post", "post/{id}-{slug}", new { controller = "Posts", action = "Show" }, namespaces);
+            routes.MapRoute("DeleteComment", "post/{id}-{slug}/del{commId}", new { controller = "Posts", action = "DeleteComment" }, namespaces);
 
             // Tags Route
             //------------------------------------------------------------

@@ -21,6 +21,8 @@ namespace LvlUpBlog.ViewModels
     public class PostsShow
     {
         public Post Post { get; set; }
+        public string CommentContent { get; set; }
+        public int PostId { get; set; }
     }
 
     public class PostsTag

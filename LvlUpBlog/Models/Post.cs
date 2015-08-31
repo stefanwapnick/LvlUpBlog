@@ -24,10 +24,12 @@ namespace LvlUpBlog.Models
         public virtual bool IsDeleted { get { return DeletedAt != null; } }
 
         public virtual IList<Tag> Tags { get; set;  }
+        public virtual IList<Comment> Comments { get; set; }
 
         public Post()
         {
-            Tags = new List<Tag>(); 
+            Tags = new List<Tag>();
+            Comments = new List<Comment>(); 
         }
     }
 
@@ -54,6 +56,16 @@ namespace LvlUpBlog.Models
                 x.Column("user_id");
                 x.NotNullable(true); 
             });
+
+
+            // One to Many mapping for comments
+            Bag(x => x.Comments, x =>
+            {
+                x.Inverse(false);                              // Indicates that this is the owner of the association (foreign key in child table)
+                x.Cascade(Cascade.All);
+                x.Key(k => k.Column(c => c.Name("post_id")));  // Column name which contains foreign key in comments table
+            }, x => x.OneToMany()); 
+
 
             // Many to Many mapping for Posts to Tags
             Bag(x => x.Tags, x =>

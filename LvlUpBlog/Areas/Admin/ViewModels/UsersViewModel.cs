@@ -21,6 +21,11 @@ namespace LvlUpBlog.Areas.Admin.ViewModels
         public IEnumerable<User> Users { get; set; }
     }
 
+    public class UsersAccount
+    {
+        public User User { get; set; }
+    }
+
     public class UsersNew
     {
 

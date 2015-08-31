@@ -151,9 +151,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\_006_Comments.cs" />
     <Compile Include="Migrations\_005_InitializeLevels.cs" />
     <Compile Include="Migrations\_004_Levels.cs" />
     <Compile Include="Migrations\_003_AdminUser.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Level.cs" />
     <Compile Include="Models\LevelFetcher.cs" />
     <Compile Include="Models\PagedData.cs" />
@@ -444,7 +446,9 @@
     <Content Include="Scripts\ckeditor\README.md" />
     <Content Include="Scripts\ckeditor\skins\moono\readme.md" />
     <Content Include="Content\Styles\bootstrap.css.map" />
+    <Content Include="Areas\Admin\Views\Users\Account.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\comment-scripts.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -470,6 +474,7 @@
     <Content Include="Views\SideBar\Index.cshtml" />
     <Content Include="Views\Errors\FiveHundredError.cshtml" />
     <Content Include="Views\Errors\FourHundredError.cshtml" />
+    <Content Include="Views\Posts\_CommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
